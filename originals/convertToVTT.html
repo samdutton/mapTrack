@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+
+<title></title>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+
+<script src="gbike.js"></script>
+
+<script type="text/javascript">
+vttString = "";
+
+function pad(number, length) {  
+    var string = number + "";
+    while (string.length < length) {
+        string += "0";
+    }
+   
+    return string;
+
+}
+// Convert decimal time to mm:ss, e.g. convert 123.3 to 2:03
+function toMinSec(decimalSeconds){
+	var hours = Math.floor(decimalSeconds / 3600);
+	var mins = Math.floor(decimalSeconds / 60);
+	var secs = Math.floor(decimalSeconds % 60);
+	return pad(hours, 2) + ":" + pad(mins, 2) + ":" + pad(secs, 2) "." + pad(milliseconds, 3);
+}
+// 00:00:00.500 --> 00:00:02.000
+// The Web is always changing
+
+function toVttTime(decimalSeconds){
+	var mins = Math.floor(decimalSeconds / 60);
+	var secs = Math.floor(decimalSeconds % 60);
+	if (secs < 10) {
+		secs = "0" + secs
+	};
+	return mins + ":" + secs;
+}
+
+
+for (var i = 0; i != points.length; ++i){
+	var point = points[i];
+	var startTime = point.t - videoOffset;
+	var endTime = i === points.length - 1 ? 
+						videoElement.duration : points[i+1].t - videoOffset; 	
+}
+</script>
+
+<style type="text/css">
+
+</style>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
