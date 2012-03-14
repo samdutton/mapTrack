@@ -168,8 +168,6 @@ if (typeof video.addTextTrack === "undefined") {
 		return parseInt(angle);
 	}
 	
-	vttString = "";
-
 	// following two functions used by XML --> WebVTT conversion above
 	
 	// 	function pad(integerOrString, length) {  
