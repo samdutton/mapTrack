@@ -108,8 +108,8 @@ color: #ACC874;
 
 p.thanks {
 font-weight: bold;
-border-top: 1px solid #444;
-padding: 10px 0 0 0;
+border-bottom: 1px solid #444;
+padding: 0 0 10px 0;
 margin: 20px 0 0 0;
 }
 

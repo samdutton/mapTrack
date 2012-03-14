@@ -51,6 +51,18 @@ if (typeof video.addTextTrack === "undefined") {
 					var t = parseInt(jQuery(this).attr('t'));
 					points.push({"lat": lat, "lng": lng, "t": t});
 				});
+				
+				// simple utility for converting XML points file to WebVTT format
+				// toVTT is defined below
+								
+				//	var vttString = "";				
+				//	for (var i = 0; i !== points.length; ++i) { 
+				//		var point = points[i];
+				//		var seconds = parseFloat(point.t - videoOffset);
+				//		vttString += toVTT(seconds) + " --> " + toVTT(seconds + 1) + "\n";
+				//		vttString += JSON.stringify(point) + "\n\n"; 
+				//	}
+				//	console.log(vttString);
 
 				var path = [], latSum = 0, lngSum = 0;
 				for (var i = 0; i !== points.length; ++i) { // not very efficient...
@@ -155,6 +167,32 @@ if (typeof video.addTextTrack === "undefined") {
 		
 		return parseInt(angle);
 	}
+	
+	vttString = "";
+
+	// following two functions used by XML --> WebVTT conversion above
+	
+	// 	function pad(integerOrString, length) {  
+	// 		var string = integerOrString + "";
+	// 		while (string.length < length) {
+	// 			string = "0" + string;
+	// 		}
+	// 		return string;
+	// 	}
+		
+		// Convert decimal time to format for WebVTT cues, e.g. convert 123.3 to 00:02:03.300
+		// WebVTT cues look like this: 
+		// 00:00:00.500 --> 00:00:02.000
+		// The Web is always changing
+	// 	function toVTT(decimalSeconds){
+	// 		var date = new Date(decimalSeconds * 1000);
+	// 		var hours = date.getHours();
+	// 		var minutes = date.getMinutes();
+	// 		var seconds = date.getSeconds();
+	// 		var milliseconds = date.getMilliseconds();
+	// 		return pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3);
+	// 	}
+	
 		
 } // track implemented
 

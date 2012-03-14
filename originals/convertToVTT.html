@@ -14,41 +14,34 @@
 <script type="text/javascript">
 vttString = "";
 
-function pad(number, length) {  
-    var string = number + "";
+function pad(integerOrString, length) {  
+    var string = integerOrString + "";
     while (string.length < length) {
-        string += "0";
+        string = "0" + string;
     }
-   
     return string;
+}
 
-}
-// Convert decimal time to mm:ss, e.g. convert 123.3 to 2:03
-function toMinSec(decimalSeconds){
-	var hours = Math.floor(decimalSeconds / 3600);
-	var mins = Math.floor(decimalSeconds / 60);
-	var secs = Math.floor(decimalSeconds % 60);
-	return pad(hours, 2) + ":" + pad(mins, 2) + ":" + pad(secs, 2) "." + pad(milliseconds, 3);
-}
+// Convert decimal time to format for WebVTT cues, e.g. convert 123.3 to 00:02:03.300
+// WebVTT cues look like this: 
 // 00:00:00.500 --> 00:00:02.000
 // The Web is always changing
-
-function toVttTime(decimalSeconds){
-	var mins = Math.floor(decimalSeconds / 60);
-	var secs = Math.floor(decimalSeconds % 60);
-	if (secs < 10) {
-		secs = "0" + secs
-	};
-	return mins + ":" + secs;
+function toVTT(decimalSeconds){
+	var date = new Date(decimalSeconds * 1000);
+	var hours = date.getHours();
+	var minutes = date.getMinutes();
+	var seconds = date.getSeconds();
+	var milliseconds = date.getMilliseconds();
+	return pad(hours, 2) + ":" + pad(minutes, 2) + ":" + pad(seconds, 2) + "." + pad(milliseconds, 3);
 }
+console.log(toVTT(123.3));
 
-
-for (var i = 0; i != points.length; ++i){
-	var point = points[i];
-	var startTime = point.t - videoOffset;
-	var endTime = i === points.length - 1 ? 
-						videoElement.duration : points[i+1].t - videoOffset; 	
-}
+// for (var i = 0; i != points.length; ++i){
+// 	var point = points[i];
+// 	var startTime = point.t - videoOffset;
+// 	var endTime = i === points.length - 1 ? 
+// 						videoElement.duration : points[i+1].t - videoOffset; 	
+// }
 </script>
 
 <style type="text/css">
