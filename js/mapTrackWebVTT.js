@@ -42,11 +42,10 @@ if (typeof video.addTextTrack === "undefined") {
 			
 			// add polyline
 			var path = [];
-			console.log(textTrack.cues);
 			for (var i = 0; i !== textTrack.cues.length; ++i) { 
 				var cue = textTrack.cues[i];
 				console.log(i, cue.text);
-				var cueObj = JSON.parse(cue.text);
+ 				var cueObj = JSON.parse(cue.text);
 				path.push(new google.maps.LatLng(cueObj.lat, cueObj.lng));
 			}
 			var polyline = new google.maps.Polyline({
