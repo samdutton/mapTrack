@@ -3,5 +3,5 @@
 Updated demo: [simpl.info/track/map](https://simpl.info/track/map).
 
 
-Code: [github.com/samdutton/simpl/tree/gh-pages/track/map](github.com/samdutton/simpl/tree/gh-pages/track/map).
+Code: [github.com/samdutton/simpl/tree/gh-pages/track/map](https://github.com/samdutton/simpl/tree/gh-pages/track/map).
 
